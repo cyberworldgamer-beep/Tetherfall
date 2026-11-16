@@ -1,0 +1,191 @@
+[gd_scene load_steps=9 format=3 uid="uid://djh87kb573xas"]
+
+[ext_resource type="Script" uid="uid://bjqs4cm63ljqs" path="res://scripts/ui/main_menu.gd" id="1_menu"]
+[ext_resource type="Shader" uid="uid://cd582fhfq41tg" path="res://shaders/menu_background.gdshader" id="2_bg"]
+[ext_resource type="Script" uid="uid://d3nennsla18is" path="res://scripts/ui/menu_art.gd" id="3_art"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settings_panel.tscn" id="4_settings"]
+[ext_resource type="PackedScene" path="res://scenes/ui/controls_panel.tscn" id="5_controls"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg"]
+shader = ExtResource("2_bg")
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/deep_color = Color(0.008, 0.012, 0.028, 1)
+shader_parameter/nebula_a = Color(0.08, 0.22, 0.32, 1)
+shader_parameter/nebula_b = Color(0.24, 0.12, 0.34, 1)
+shader_parameter/sun_color = Color(1, 0.55, 0.25, 1)
+shader_parameter/sun_strength = 1.0
+
+[sub_resource type="Gradient" id="Gradient_left"]
+offsets = PackedFloat32Array(0, 0.22, 0.52, 0.78)
+colors = PackedColorArray(0.008, 0.011, 0.022, 0.92, 0.008, 0.011, 0.022, 0.68, 0.008, 0.011, 0.022, 0.2, 0.008, 0.011, 0.022, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_left"]
+gradient = SubResource("Gradient_left")
+width = 512
+height = 8
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OverlayGradient" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_left")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="MenuArt" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_art")
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.62
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_constants/margin_left = 112
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 56
+
+[node name="VBox" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Eyebrow" type="Label" parent="Content/VBox"]
+layout_mode = 2
+theme_type_variation = &"SubHeaderLabel"
+text = "ZERO-G SALVAGE PROTOCOL  //  OPERATOR KITE-7"
+
+[node name="Title" type="Label" parent="Content/VBox"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "TETHERFALL"
+
+[node name="TitleRule" type="ColorRect" parent="Content/VBox"]
+custom_minimum_size = Vector2(112, 3)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+color = Color(0.31, 0.96, 0.87, 0.85)
+
+[node name="Tagline" type="Label" parent="Content/VBox"]
+layout_mode = 2
+theme_type_variation = &"TaglineLabel"
+text = "RIDE THE WRECKAGE.   FEED THE GATE."
+
+[node name="Gap" type="Control" parent="Content/VBox"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Content/VBox"]
+custom_minimum_size = Vector2(410, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 10
+
+[node name="LaunchButton" type="Button" parent="Content/VBox/Buttons"]
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "LAUNCH RUN"
+
+[node name="DailyButton" type="Button" parent="Content/VBox/Buttons"]
+layout_mode = 2
+text = "DAILY CONTRACT"
+
+[node name="SettingsButton" type="Button" parent="Content/VBox/Buttons"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ManualButton" type="Button" parent="Content/VBox/Buttons"]
+layout_mode = 2
+text = "FLIGHT MANUAL"
+
+[node name="QuitButton" type="Button" parent="Content/VBox/Buttons"]
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "QUIT"
+
+[node name="Gap2" type="Control" parent="Content/VBox"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+
+[node name="FooterBlock" type="VBoxContainer" parent="Content/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="BestLabel" type="Label" parent="Content/VBox/FooterBlock"]
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "NO RUNS LOGGED YET"
+
+[node name="StatsLabel" type="Label" parent="Content/VBox/FooterBlock"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "YOUR FIRST CONTRACT IS WAITING"
+
+[node name="Footer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = -54.0
+offset_right = 112.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_type_variation = &"SmallLabel"
+text = "TETHERFALL  v1.0   ·   GODOT 4   ·   BUILT FOR MOMENTUM"
+
+[node name="SettingsPanel" parent="." instance=ExtResource("4_settings")]
+layout_mode = 1
+
+[node name="ControlsPanel" parent="." instance=ExtResource("5_controls")]
+layout_mode = 1
+
+[node name="FadeOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.008, 0.012, 0.028, 1)
+
+[connection signal="pressed" from="Content/VBox/Buttons/LaunchButton" to="." method="_on_launch_pressed"]
+[connection signal="pressed" from="Content/VBox/Buttons/DailyButton" to="." method="_on_daily_pressed"]
+[connection signal="pressed" from="Content/VBox/Buttons/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Content/VBox/Buttons/ManualButton" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Content/VBox/Buttons/QuitButton" to="." method="_on_quit_pressed"]

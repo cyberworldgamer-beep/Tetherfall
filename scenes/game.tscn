@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="PackedScene" path="res://scenes/star.tscn" id="2_star"]
+[ext_resource type="Script" path="res://scripts/world/asteroid_field.gd" id="3_field"]
+[ext_resource type="PackedScene" path="res://scenes/gate.tscn" id="4_gate"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="5_player"]
+[ext_resource type="PackedScene" path="res://scenes/camera_rig.tscn" id="6_camera"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="7_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="8_pause"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_over.tscn" id="9_over"]
+[ext_resource type="Shader" path="res://shaders/nebula_sky.gdshader" id="10_sky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sky"]
+shader = ExtResource("10_sky")
+shader_parameter/deep_color = Color(0.006, 0.01, 0.024, 1)
+shader_parameter/nebula_deep = Color(0.055, 0.075, 0.19, 1)
+shader_parameter/nebula_teal = Color(0.02, 0.19, 0.22, 1)
+shader_parameter/nebula_violet = Color(0.19, 0.07, 0.26, 1)
+shader_parameter/star_density = 0.982
+shader_parameter/nebula_strength = 1.0
+
+[sub_resource type="Sky" id="Sky_main"]
+sky_material = SubResource("ShaderMaterial_sky")
+radiance_size = 3
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+sky = SubResource("Sky_main")
+ambient_light_source = 2
+ambient_light_color = Color(0.18, 0.22, 0.31, 1)
+ambient_light_energy = 0.8
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 1.0
+tonemap_white = 6.0
+glow_enabled = true
+glow_intensity = 0.85
+glow_strength = 1.0
+glow_bloom = 0.12
+glow_blend_mode = 1
+glow_hdr_threshold = 0.9
+glow_hdr_scale = 2.0
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.05
+adjustment_saturation = 1.08
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_game")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="FillLight" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-38, -32, 0)
+light_color = Color(0.55, 0.72, 1, 1)
+light_energy = 0.55
+shadow_enabled = false
+
+[node name="Star" parent="." instance=ExtResource("2_star")]
+
+[node name="AsteroidField" type="Node3D" parent="."]
+script = ExtResource("3_field")
+
+[node name="Gate" parent="." instance=ExtResource("4_gate")]
+position = Vector3(24, 10, 46)
+
+[node name="Player" parent="." instance=ExtResource("5_player")]
+
+[node name="CameraRig" parent="." instance=ExtResource("6_camera")]
+
+[node name="Cores" type="Node3D" parent="."]
+
+[node name="Mines" type="Node3D" parent="."]
+
+[node name="FX" type="Node3D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("7_hud")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_pause")]
+
+[node name="GameOver" parent="." instance=ExtResource("9_over")]

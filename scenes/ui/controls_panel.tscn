@@ -1,0 +1,207 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/controls_panel.gd" id="1_controls"]
+
+[node name="ControlsPanel" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_controls")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.002, 0.005, 0.01, 0.84)
+mouse_filter = 0
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(930, 800)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/Panel/VBox/Header"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "FLIGHT MANUAL"
+
+[node name="Spacer" type="Control" parent="Center/Panel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Code" type="Label" parent="Center/Panel/VBox/Header"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "KITE-7 // FIELD GUIDE"
+size_flags_vertical = 4
+
+[node name="Separator" type="HSeparator" parent="Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="InputHeader" type="Label" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"SubHeaderLabel"
+text = "INPUT"
+
+[node name="InputGrid" type="GridContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 34
+theme_override_constants/v_separation = 5
+columns = 2
+
+[node name="K1" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "MOUSE"
+
+[node name="D1" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Aim the camera · tether targets the reticle"
+
+[node name="K2" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "LMB  /  F"
+
+[node name="D2" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Fire the tether at any rock or the gate"
+
+[node name="K3" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "RMB  /  X"
+
+[node name="D3" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Release the tether"
+
+[node name="K4" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "MOUSE WHEEL"
+
+[node name="D4" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Reel the tether in or out"
+
+[node name="K5" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "W  /  S"
+
+[node name="D5" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Thrust forward / reverse"
+
+[node name="K6" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "A  /  D"
+
+[node name="D6" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Strafe left / right"
+
+[node name="K7" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "SPACE  /  CTRL"
+
+[node name="D7" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Ascend / descend"
+
+[node name="K8" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "SHIFT"
+
+[node name="D8" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Afterburner · drains the blue bar"
+
+[node name="K9" type="Label" parent="Center/Panel/VBox/InputGrid"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "ESC  /  H"
+
+[node name="D9" type="Label" parent="Center/Panel/VBox/InputGrid"]
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Pause · toggle context hints"
+
+[node name="Separator2" type="HSeparator" parent="Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="ContractHeader" type="Label" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"SubHeaderLabel"
+text = "THE CONTRACT"
+
+[node name="Contract" type="Label" parent="Center/Panel/VBox"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_type_variation = &"HintLabel"
+text = "Aether cores are scattered through the Kessler Belt. Touch them to load up to three, then fly through the SALVAGE GATE to bank the score and buy more time.
+
+Every successful delivery builds your chain multiplier. Impacts, heat, and missed delivery windows break the chain.
+
+Asteroids are anchors: tether to any rock and swing. Momentum is free. Thrust is not."
+autowrap_mode = 3
+
+[node name="Tip" type="Label" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"HotLabel"
+text = "TIP  ·  A solar flare is a slingshot, not a wall. Aim away from the star and ride it."
+autowrap_mode = 3
+
+[node name="Footer" type="HBoxContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="DoneButton" type="Button" parent="Center/Panel/VBox/Footer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"PrimaryButton"
+text = "BACK TO THE VOID"

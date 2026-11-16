@@ -1,0 +1,257 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/settings_panel.gd" id="1_settings"]
+
+[node name="SettingsPanel" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_settings")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.002, 0.005, 0.01, 0.82)
+mouse_filter = 0
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(900, 760)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/Panel/VBox/Header"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "SYSTEM SETTINGS"
+
+[node name="Spacer" type="Control" parent="Center/Panel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Code" type="Label" parent="Center/Panel/VBox/Header"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "KITE-7 // CONFIG"
+
+[node name="Separator" type="HSeparator" parent="Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="AudioHeader" type="Label" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"SubHeaderLabel"
+text = "AUDIO"
+
+[node name="AudioGrid" type="GridContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 28
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="MusicLabel" type="Label" parent="Center/Panel/VBox/AudioGrid"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "MUSIC VOLUME"
+
+[node name="MusicBox" type="HBoxContainer" parent="Center/Panel/VBox/AudioGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="MusicSlider" type="HSlider" parent="Center/Panel/VBox/AudioGrid/MusicBox"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 62.0
+
+[node name="MusicValue" type="Label" parent="Center/Panel/VBox/AudioGrid/MusicBox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "62%"
+horizontal_alignment = 2
+
+[node name="SfxLabel" type="Label" parent="Center/Panel/VBox/AudioGrid"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "EFFECTS VOLUME"
+
+[node name="SfxBox" type="HBoxContainer" parent="Center/Panel/VBox/AudioGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="SfxSlider" type="HSlider" parent="Center/Panel/VBox/AudioGrid/SfxBox"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 85.0
+
+[node name="SfxValue" type="Label" parent="Center/Panel/VBox/AudioGrid/SfxBox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "85%"
+horizontal_alignment = 2
+
+[node name="Separator2" type="HSeparator" parent="Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="ControlsHeader" type="Label" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"SubHeaderLabel"
+text = "CONTROLS"
+
+[node name="ControlsGrid" type="GridContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 28
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="SensLabel" type="Label" parent="Center/Panel/VBox/ControlsGrid"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "MOUSE SENSITIVITY"
+
+[node name="SensBox" type="HBoxContainer" parent="Center/Panel/VBox/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="SensSlider" type="HSlider" parent="Center/Panel/VBox/ControlsGrid/SensBox"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.3
+max_value = 2.5
+step = 0.05
+value = 1.0
+
+[node name="SensValue" type="Label" parent="Center/Panel/VBox/ControlsGrid/SensBox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_type_variation = &"AccentLabel"
+text = "1.00x"
+horizontal_alignment = 2
+
+[node name="InvertLabel" type="Label" parent="Center/Panel/VBox/ControlsGrid"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "INVERT VERTICAL AXIS"
+
+[node name="InvertCheck" type="CheckButton" parent="Center/Panel/VBox/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "INVERTED"
+
+[node name="Separator3" type="HSeparator" parent="Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="VideoHeader" type="Label" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"SubHeaderLabel"
+text = "VIDEO & HUD"
+
+[node name="VideoGrid" type="GridContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 28
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="QualityLabel" type="Label" parent="Center/Panel/VBox/VideoGrid"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "QUALITY PRESET"
+
+[node name="QualityOption" type="OptionButton" parent="Center/Panel/VBox/VideoGrid"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="FullscreenLabel" type="Label" parent="Center/Panel/VBox/VideoGrid"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "DISPLAY MODE"
+
+[node name="FullscreenCheck" type="CheckButton" parent="Center/Panel/VBox/VideoGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "FULLSCREEN"
+
+[node name="HintsLabel" type="Label" parent="Center/Panel/VBox/VideoGrid"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "CONTEXT HINTS"
+
+[node name="HintsCheck" type="CheckButton" parent="Center/Panel/VBox/VideoGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "ENABLED"
+
+[node name="Spacer" type="Control" parent="Center/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FooterSeparator" type="HSeparator" parent="Center/Panel/VBox"]
+layout_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="Center/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SavedNote" type="Label" parent="Center/Panel/VBox/Footer"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "SETTINGS SAVE ON CLOSE"
+size_flags_vertical = 4
+
+[node name="Spacer2" type="Control" parent="Center/Panel/VBox/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetButton" type="Button" parent="Center/Panel/VBox/Footer"]
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "RESET DEFAULTS"
+
+[node name="DoneButton" type="Button" parent="Center/Panel/VBox/Footer"]
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "DONE"
